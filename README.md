@@ -1,11 +1,13 @@
-# TV Remote (Android)
+# TV Remote — redesigned Android prototype
+
+A dark, touch-friendly remote interface based on the supplied Wanbo remote, with a circular D-pad, device selector, scan dialog, and clear controls. The previous thin-bar UI has been replaced.
 
 ## Status
-This is an installable **discovery and UI prototype**, not a functioning universal remote. It can discover advertised Android TV Remote and Google Cast mDNS services on the same Wi-Fi network and remember a selected service. It **cannot yet pair or send control commands**. Do not confuse service discovery with working pairing.
 
-The Wanbo WPC024's protocol is unverified. Functional pairing requires implementation of the authenticated Android TV Remote v2 protocol or the actual projector's supported protocol. Netflix/YouTube buttons are placeholders.
+This is **not a functioning universal remote yet**. Wi-Fi NSD discovery looks for `_androidtvremote2._tcp.`, `_androidtvremote._tcp.`, and `_googlecast._tcp.` advertisements. It does not authenticate, pair, or transmit remote commands. Cast discovery alone does not imply remote compatibility. Selecting a device only saves its name. The Wanbo WPC024's support is unverified.
 
-## GitHub mobile build
-Upload the *contents* of this folder to the repository root (including `.github/workflows/build-apk.yml`). In GitHub Actions, run **Build TV Remote APK**. Download artifact **TV-Remote-debug-APK**, extract it, and install `app-debug.apk`.
+## GitHub build
 
-Uses Android SDK 35, Android Gradle Plugin 8.7.3, Gradle 8.9, Java 17. No Gradle wrapper is included; GitHub Actions installs Gradle 8.9.
+Upload the **contents** of this project to the root of your GitHub repository, including `.github/workflows/build-apk.yml`. Run Actions → Build TV Remote APK → Run workflow. Download the APK artifact from a successful run.
+
+The project has not been compiled locally in this environment; use the GitHub Actions run to verify the build.
