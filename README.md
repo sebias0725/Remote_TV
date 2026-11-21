@@ -1,11 +1,11 @@
-# Wanbo WPC024 Remote — Android starter project
+# TV Remote (Android)
 
-**Status: prototype, NOT a functional remote.**
+## Status
+This is an installable **discovery and UI prototype**, not a functioning universal remote. It can discover advertised Android TV Remote and Google Cast mDNS services on the same Wi-Fi network and remember a selected service. It **cannot yet pair or send control commands**. Do not confuse service discovery with working pairing.
 
-Based on the user's remote photograph and projector About screen (WPC024, firmware wanbo-WPC024-XWM E-V1.0.3-20250824). Contains a dark button interface and a diagnostic probe for selected TCP ports on a manually entered projector IP. No remote commands are transmitted.
+The Wanbo WPC024's protocol is unverified. Functional pairing requires implementation of the authenticated Android TV Remote v2 protocol or the actual projector's supported protocol. Netflix/YouTube buttons are placeholders.
 
-## Build
-Open this directory in Android Studio with Android SDK 35 and Gradle-compatible JDK 17. Let Android Studio sync the project, then Build → Build APK(s). This environment did not have the Android SDK/Gradle, so an APK could not be built or tested here.
+## GitHub mobile build
+Upload the *contents* of this folder to the repository root (including `.github/workflows/build-apk.yml`). In GitHub Actions, run **Build TV Remote APK**. Download artifact **TV-Remote-debug-APK**, extract it, and install `app-debug.apk`.
 
-## What is needed to make it functional
-Identify whether WPC024 exposes Android TV Remote Service (typically TLS ports 6466/6467), another vendor Wi-Fi service, or only Bluetooth/IR. Implement authenticated pairing and the correct command protocol. Do not assume a port scan proves compatibility. Power-on may require IR or network wake support.
+Uses Android SDK 35, Android Gradle Plugin 8.7.3, Gradle 8.9, Java 17. No Gradle wrapper is included; GitHub Actions installs Gradle 8.9.
