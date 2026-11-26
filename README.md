@@ -1,13 +1,16 @@
-# TV Remote — redesigned Android prototype
+# TV Remote — Bluetooth HID prototype
 
-A dark, touch-friendly remote interface based on the supplied Wanbo remote, with a circular D-pad, device selector, scan dialog, and clear controls. The previous thin-bar UI has been replaced.
+Bluetooth only: uses Android BluetoothHidDevice to register as a keyboard/consumer-control HID accessory. No Wi-Fi, IR, or network discovery.
 
-## Status
+## Pairing
+1. Install the GitHub Actions debug APK and grant Nearby Devices permission.
+2. Tap PAIR and Make Discoverable.
+3. On Wanbo WPC024: Bluetooth → Search for accessories; select the phone and approve pairing.
+4. If necessary tap PAIR → Reconnect paired. Try arrows/OK.
 
-This is **not a functioning universal remote yet**. Wi-Fi NSD discovery looks for `_androidtvremote2._tcp.`, `_androidtvremote._tcp.`, and `_googlecast._tcp.` advertisements. It does not authenticate, pair, or transmit remote commands. Cast discovery alone does not imply remote compatibility. Selecting a device only saves its name. The Wanbo WPC024's support is unverified.
+**Compatibility warning:** Android may not support HID Device on this phone, and the projector may reject generic keyboards. The HID app registration and connection are not guaranteed. Power, Home, volume, and streaming shortcuts may not be recognized by the projector. App shortcuts are intentionally not sent as arbitrary keycodes. Android may unregister HID when the app is backgrounded.
 
 ## GitHub build
+Upload project contents to repository root, run Actions → Build TV Remote APK, download the artifact. Android SDK 35, Gradle 8.9, Java 17.
 
-Upload the **contents** of this project to the root of your GitHub repository, including `.github/workflows/build-apk.yml`. Run Actions → Build TV Remote APK → Run workflow. Download the APK artifact from a successful run.
-
-The project has not been compiled locally in this environment; use the GitHub Actions run to verify the build.
+No actual-device test or APK compilation was performed in this environment.
